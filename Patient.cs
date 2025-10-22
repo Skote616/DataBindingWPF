@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -77,61 +78,23 @@ namespace DataBindingWPF
             }
         }
 
-        private DateTime _lastAppointment;
-        public DateTime LastAppointment
+        private string _phone = "Номер телефона";
+        public string Phone
         {
-            get => _lastAppointment;
+            get => _phone;
             set
             {
-                if (_lastAppointment != value)
+                if (value != _phone)
                 {
-                    _lastAppointment = value;
-                    OnPropertyChanged( );
+                    _phone = value;
+                    OnPropertyChanged();
                 }
             }
         }
 
-        private string _lastDoctor = "Идентификатор крайнего врача";
-        public string LastDoctor
-        {
-            get => _lastDoctor;
-            set
-            {
-                if (_lastDoctor != value)
-                {
-                    _lastDoctor = value;
-                    OnPropertyChanged( );
-                }
-            }
-        }
+        public ObservableCollection<Appointment> AppointmentStories { get; set; } = new( );
 
-        private string _diagnosis = "Диагноз";
-        public string Diagnosis
-        {
-            get => _diagnosis;
-            set
-            {
-                if (value != _diagnosis)
-                {
-                    _diagnosis = value;
-                    OnPropertyChanged( );
-                }
-            }
-        }
-
-        private string _recomendations = "Рекомендации";
-        public string Recomendations
-        {
-            get => _recomendations;
-            set
-            {
-                if (value != _recomendations)
-                {
-                    _recomendations = value;
-                    OnPropertyChanged( );
-                }
-            }
-        }
+        
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged ([CallerMemberName] string? propName =
