@@ -8,7 +8,8 @@
         Title="MainWindow" Height="850" Width="1000">
 
     <Grid>
-        <Grid.ColumnDefinitions>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -22,7 +23,7 @@
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <!--Регистрация пользователя-->
+        --><!--Регистрация пользователя--><!--
         <Border  Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" BorderBrush="Black" BorderThickness="1">
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" HorizontalAlignment="Center" Width="230">
                 <Label Content="Фамилия"></Label>
@@ -42,7 +43,7 @@
         </Border>
 
         
-        <!--Поиск пациента по id-->
+        --><!--Поиск пациента по id--><!--
         <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
             <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Width="204">
                 <Label Content="Введите индентификатор пациента"></Label>
@@ -53,7 +54,7 @@
             </StackPanel>
         </Border>
 
-        <!--Вход пользователя-->
+        --><!--Вход пользователя--><!--
         <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
             <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,0,0" Grid.RowSpan="2" HorizontalAlignment="Center">
                 <Label Content="Введите индентификатор пользователя"></Label>
@@ -64,7 +65,7 @@
             </StackPanel>
         </Border>
 
-        <!--Добавление пациента-->
+        --><!--Добавление пациента--><!--
         <Border  Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1">
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Center" Width="230">
                 <Label Content="Фамилия"/>
@@ -75,24 +76,24 @@
                 <TextBox Text="{Binding patient.MiddleName}"></TextBox>
                 <Label Content="Дата рождения"></Label>
                 <DatePicker SelectedDate="{Binding patient.Birthday}"></DatePicker>
-                <!--<Label Content="Крайний прием"></Label>
+                --><!--<Label Content="Крайний прием"></Label>
                 <TextBox Width="230"></TextBox>
                 <Label Content="Крайний доктор"></Label>
                 <TextBox Width="230"></TextBox>
                 <Label Content="Диагноз"></Label>
                 <TextBox Width="230"></TextBox>
                 <Label Content="Рекомендации"></Label>
-                <TextBox Width="230"></TextBox>-->
+                <TextBox Width="230"></TextBox>--><!--
                 <Button Margin="0,10,0,0" Click="Add_Patient">Добавить</Button>
             </StackPanel>
         </Border>
     
-        <!--Отображение информации о пользователе-->
+        --><!--Отображение информации о пользователе--><!--
         <Border  Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Center" Width="230">
                 <WrapPanel Orientation="Horizontal">
                 <Label Content="ID:"></Label>
-                <Label x:Name="CurrentId"></Label>
+                <Label x:Name="CurrentId" Content=""></Label>
                 </WrapPanel>
                 <WrapPanel Orientation="Horizontal">
                     <Label Content="Фамилия:"></Label>
@@ -110,15 +111,15 @@
                     <Label Content="Специальность:"></Label>
                     <Label x:Name="CurrentSpecialisation"></Label>
                 </WrapPanel>
-                <!--<WrapPanel Orientation="Horizontal">
+                --><!--<WrapPanel Orientation="Horizontal">
                     <Label Content="Пароль:"></Label>
                     <Label></Label>
-                </WrapPanel>-->
+                </WrapPanel>--><!--
 
             </StackPanel>
         </Border>
 
-        <!--Прием пациента-->    
+        --><!--Прием пациента--><!--    
         <Border  Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Grid.RowSpan="3" >
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" HorizontalAlignment="Center" Width="230">
                 <Label Content="Идентификатор пациента"></Label>
@@ -126,7 +127,7 @@
                 <Label Content="Индентификатор врача"></Label>
                 <TextBox x:Name="_doctorID" Text="{Binding patient.LastDoctor}"></TextBox>
                 <Label Content="Дата приема"></Label>
-                <DatePicker SelectedDate="{Binding patient.LastApointment}"></DatePicker>
+                <DatePicker SelectedDate="{Binding patient.LastAppointment}"></DatePicker>
                 <Label Content="Диагноз"></Label>
                 <TextBox x:Name="_diagnosis" Text="{Binding patient.Diagnosis}"></TextBox>
                 <Label Content="Рекомендации"></Label>
@@ -135,7 +136,7 @@
             </StackPanel>
         </Border>
 
-        <!--Изменение информации о пациенте-->
+        --><!--Изменение информации о пациенте--><!--
         <Border  Grid.Row="2" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Grid.RowSpan="2" >
             <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Width="230">
                 <Label Content="Фамилия"></Label>
@@ -147,10 +148,11 @@
                     <Label Content="Дата рождения"></Label>
                 <DatePicker SelectedDate="{Binding patient.Birthday}"></DatePicker>
                 <Button Margin="0,10,0,0" Click="Change_Patient">Изменить</Button>
+                <Button Margin="0,10,0,0" Click="Return">Вернуть изменения</Button>
                 </StackPanel>
         </Border>
 
-        <!--Состояние системы-->
+        --><!--Состояние системы--><!--
         <Border  Grid.Row="4" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3" >
             <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"  Orientation="Horizontal">
                 <Label Content="Количество пользователей:"></Label>
@@ -158,6 +160,6 @@
                 <Label Content="Количество пациентов:" Margin="10,0,0,0"></Label>
                 <Label x:Name="PatientsCount"></Label>
             </StackPanel>
-        </Border>
+        </Border>-->
     </Grid>
 </Window>

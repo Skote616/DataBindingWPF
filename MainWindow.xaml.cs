@@ -6,10 +6,11 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Text.Json;
+using System.Windows.Navigation;
+using DataBindingWPF.Pages;
 
 namespace DataBindingWPF
 {
@@ -29,10 +30,11 @@ namespace DataBindingWPF
         {
             InitializeComponent();
             DataContext = this;
-            countOfFiles( );
+            //countOfFiles( );
+            MainFrame.Navigate(new EnterPage());
         }
 
-        private void Add_User(object sender, RoutedEventArgs e)
+      /*  private void Add_User(object sender, RoutedEventArgs e)
         {
             if (PasswordLine.Text == ConfirmPassword.Text)
             {
@@ -108,24 +110,32 @@ namespace DataBindingWPF
         
         private void Add_Patient (object sender, RoutedEventArgs e)
         {
-            
-                patient.Id = patient.GenerateIdPatient( );
+            if (CurrentId.Content != "")
+            {
+                patient.Id = patient.GenerateIdPatient();
                 JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
 
                 string json = JsonSerializer.Serialize(patient);
                 StreamWriter sr = File.CreateText($"{patient.Id}.JSON");
                 sr.Write(json);
-                sr.Close( );
+                sr.Close();
                 MessageBox.Show($"Пациент {patient.Id} добавлен");
-                
-           
 
-            countOfFiles( );
+
+
+                countOfFiles();
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не авторизован");
+            }
         }
 
         private async void Appointment (object sender, RoutedEventArgs e)
         {
-            if (File.Exists($"{_patientID.Text}.json"))
+            if (CurrentId.Content != "")
+            {
+                if (File.Exists($"{_patientID.Text}.json"))
             {
                 string path = $"{_patientID.Text}.json";
                 using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
@@ -152,62 +162,123 @@ namespace DataBindingWPF
             {
                 MessageBox.Show("Пациента с указанным идентификатором не найдено");
             }
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не авторизован");
+            }
         }
 
         private async void Search_Patient (object sender, RoutedEventArgs e)
         {
-            if (File.Exists($"{findId.Text}.json"))
+            if (CurrentId.Content != "")
             {
-                patient.Id = findId.Text;
-                string path = $"{findId.Text}.json";
-                using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+                if (File.Exists($"{findId.Text}.json"))
                 {
-                    Patient? restoredPatient = await JsonSerializer.DeserializeAsync<Patient>(fs);
+                    patient.Id = findId.Text;
+                    string path = $"{findId.Text}.json";
+                    using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+                    {
+                        Patient? restoredPatient = await JsonSerializer.DeserializeAsync<Patient>(fs);
 
-                    patient.Name = restoredPatient.Name;
-                    patient.LastName = restoredPatient.LastName;
-                    patient.MiddleName = restoredPatient.MiddleName;
-                    patient.Birthday = restoredPatient.Birthday;
-                    MessageBox.Show($"Фамилия: {patient.Name}\n Имя: {patient.LastName}\n Отчество: {patient.MiddleName} \nДата рождения: {patient.Birthday}");
+                        patient.Name = restoredPatient.Name;
+                        patient.LastName = restoredPatient.LastName;
+                        patient.MiddleName = restoredPatient.MiddleName;
+                        patient.Birthday = restoredPatient.Birthday;
+                        MessageBox.Show($"Фамилия: {patient.Name}\n Имя: {patient.LastName}\n Отчество: {patient.MiddleName} \nДата рождения: {patient.Birthday}");
+                    }
+
                 }
-
+                else
+                {
+                    MessageBox.Show("Пациента с указанным идентификатором не найдено");
+                }
+              
             }
             else
             {
-                MessageBox.Show("Пациента с указанным идентификатором не найдено");
+                MessageBox.Show("Пользователь не авторизован");
             }
         }
+
+        string name, lastname,middlename;
+        DateTime birthday;
 
         private async void Change_Patient (object sender, RoutedEventArgs e)
         {
-            
-                string path = $"{patient.Id}.json";
-            if (!File.Exists(path)) MessageBox.Show("Файл не нашел");
-            else
+            if (CurrentId.Content != "")
             {
-                using (FileStream fs = new FileStream(path, FileMode.Open))
+                string path = $"{patient.Id}.json";
+                if (!File.Exists(path)) MessageBox.Show("Файл не нашел");
+                else
                 {
-                    Patient? restoredPatient = await JsonSerializer.DeserializeAsync<Patient>(fs);
+                    using (FileStream fs = new FileStream(path, FileMode.Open))
+                    {
+                        Patient? restoredPatient = await JsonSerializer.DeserializeAsync<Patient>(fs);
 
-                    patient.LastAppointment = restoredPatient.LastAppointment;
-                    patient.LastDoctor = restoredPatient.LastDoctor;
-                    patient.Diagnosis = restoredPatient.Diagnosis;
-                    patient.Recomendations = restoredPatient.Recomendations;
+                        name = restoredPatient.Name;
+                        lastname = restoredPatient.LastName;
+                        middlename = restoredPatient.MiddleName;
+                        birthday = restoredPatient.Birthday;
+                        patient.LastAppointment = restoredPatient.LastAppointment;
+                        patient.LastDoctor = restoredPatient.LastDoctor;
+                        patient.Diagnosis = restoredPatient.Diagnosis;
+                        patient.Recomendations = restoredPatient.Recomendations;
+
+                    }
+                    JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+
+                    string json = JsonSerializer.Serialize(patient);
+                    StreamWriter sr = File.CreateText($"{patient.Id}.JSON");
+                    sr.Write(json);
+                    sr.Close();
+                    MessageBox.Show($"Изменения пациента {patient.Id} зафиксированы");
 
                 }
-                JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не авторизован");
+            }
 
-                string json = JsonSerializer.Serialize(patient);
-                StreamWriter sr = File.CreateText($"{patient.Id}.JSON");
-                sr.Write(json);
-                sr.Close( );
-                MessageBox.Show($"Изменения пациента {patient.Id} зафиксированы");
 
             }
-            
-            
 
-        }
-       
+        private async void Return(object sender, RoutedEventArgs e)
+        {
+            if (CurrentId.Content != "")
+            {
+                string path = $"{patient.Id}.json";
+                if (!File.Exists(path)) MessageBox.Show("Файл не нашел");
+                else
+                {
+                    using (FileStream fs = new FileStream(path, FileMode.Open))
+                    {
+                        Patient? restoredPatient = await JsonSerializer.DeserializeAsync<Patient>(fs);
+
+                        patient.Name = name;
+                        patient.LastName = lastname;
+                        patient.MiddleName = middlename;
+                        patient.Birthday = birthday;
+                        patient.LastAppointment = restoredPatient.LastAppointment;
+                        patient.LastDoctor = restoredPatient.LastDoctor;
+                        patient.Diagnosis = restoredPatient.Diagnosis;
+                        patient.Recomendations = restoredPatient.Recomendations;
+
+                    }
+                    JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+
+                    string json = JsonSerializer.Serialize(patient);
+                    StreamWriter sr = File.CreateText($"{patient.Id}.JSON");
+                    sr.Write(json);
+                    sr.Close();
+                    MessageBox.Show($"Изменения пациента {patient.Id} возвращены");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не авторизован");
+            }
+        }*/
     }
 }
