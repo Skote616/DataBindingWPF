@@ -36,6 +36,7 @@ namespace DataBindingWPF
                 }
             }
         }
+<<<<<<< HEAD
         private string _doctor_Fio = "ФИО врача";
         public string Doctor_Fio
         {
@@ -49,6 +50,8 @@ namespace DataBindingWPF
                 }
             }
         }
+=======
+>>>>>>> 68bfe7522069bb4544432cb3b01b2ae64a25edc3
         private string _diagnosis = "Диагноз";
         public string Diagnosis
         {

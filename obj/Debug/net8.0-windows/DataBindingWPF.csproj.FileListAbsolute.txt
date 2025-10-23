@@ -63,6 +63,7 @@ C:\Users\pc\Desktop\collage\DataBindingWPF-master\obj\Debug\net8.0-windows\DataB
 C:\Users\pc\Desktop\collage\DataBindingWPF-master\obj\Debug\net8.0-windows\DataBindingWPF.sourcelink.json
 C:\Users\pc\Desktop\collage\DataBindingWPF-master\obj\Debug\net8.0-windows\DataBindingWPF.genruntimeconfig.cache
 C:\Users\pc\Desktop\collage\DataBindingWPF-master\obj\Debug\net8.0-windows\ref\DataBindingWPF.dll
+<<<<<<< HEAD
 C:\Users\st310-06\Desktop\DataBindingWPF-master\bin\Debug\net8.0-windows\DataBindingWPF.exe
 C:\Users\st310-06\Desktop\DataBindingWPF-master\bin\Debug\net8.0-windows\DataBindingWPF.deps.json
 C:\Users\st310-06\Desktop\DataBindingWPF-master\bin\Debug\net8.0-windows\DataBindingWPF.runtimeconfig.json
@@ -95,3 +96,5 @@ C:\Users\st310-06\Desktop\DataBindingWPF-master\obj\Debug\net8.0-windows\refint\
 C:\Users\st310-06\Desktop\DataBindingWPF-master\obj\Debug\net8.0-windows\DataBindingWPF.pdb
 C:\Users\st310-06\Desktop\DataBindingWPF-master\obj\Debug\net8.0-windows\DataBindingWPF.genruntimeconfig.cache
 C:\Users\st310-06\Desktop\DataBindingWPF-master\obj\Debug\net8.0-windows\ref\DataBindingWPF.dll
+=======
+>>>>>>> 68bfe7522069bb4544432cb3b01b2ae64a25edc3

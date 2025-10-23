@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+=======
+using System.IO;
+using System.Linq;
+>>>>>>> 68bfe7522069bb4544432cb3b01b2ae64a25edc3
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -25,6 +30,7 @@ namespace DataBindingWPF.Pages
     /// </summary>
     public partial class AppointmentPage : Page
     {
+<<<<<<< HEAD
         private Appointment _appointment = new Appointment();
         private Patient _patient;
         private ObservableCollection<Appointment> _appointmentStories = new ObservableCollection<Appointment>();
@@ -139,5 +145,52 @@ namespace DataBindingWPF.Pages
                 }
 
     
+=======
+        Appointment appointment = new Appointment();
+        Patient patient;
+        public AppointmentPage(Patient pat)
+        {
+            patient = pat;
+            DataContext = appointment;
+            InitializeComponent();
+        }
+
+       
+        private async void addAppointment(object sender, RoutedEventArgs e)
+        {
+           
+                if (File.Exists($"D_{patient.Id}.json"))
+                {
+                    string path = $"D_{patient.Id}.json";
+                    using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+                    {
+                        Patient? restoredPatient = await JsonSerializer.DeserializeAsync<Patient>(fs);
+
+                        patient.Id = restoredPatient.Id;
+                        patient.Name = restoredPatient.Name;
+                        patient.LastName = restoredPatient.LastName;
+                        patient.MiddleName = restoredPatient.MiddleName;
+                        patient.Birthday = restoredPatient.Birthday;
+                        patient.AppointmentStories = restoredPatient.AppointmentStories;
+                    }
+
+                    patient.AppointmentStories.Add(appointment);    
+
+                    JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+
+                    string json = JsonSerializer.Serialize(patient);
+                    StreamWriter sr = File.CreateText($"{patient.Id}.JSON");
+                    sr.Write(json);
+                    sr.Close();
+                    MessageBox.Show($"Прием пациента {patient.Id} зафиксирован");
+                    NavigationService.GoBack();
+                }
+                else
+                {
+                    MessageBox.Show("Пациента с указанным идентификатором не найдено");
+                }
+           
+        }
+>>>>>>> 68bfe7522069bb4544432cb3b01b2ae64a25edc3
     }
 }

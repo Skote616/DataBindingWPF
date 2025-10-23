@@ -1,5 +1,6 @@
 ﻿
 
+<<<<<<< HEAD
 FC:\Users\st310-06\Desktop\DataBindingWPF-master\MainWindow.xaml;;
 FC:\Users\st310-06\Desktop\DataBindingWPF-master\Pages\AddPatientPage.xaml;;
 FC:\Users\st310-06\Desktop\DataBindingWPF-master\Pages\AppointmentPage.xaml;;
@@ -7,4 +8,13 @@ FC:\Users\st310-06\Desktop\DataBindingWPF-master\Pages\ChangeInfoPage.xaml;;
 FC:\Users\st310-06\Desktop\DataBindingWPF-master\Pages\EnterPage.xaml;;
 FC:\Users\st310-06\Desktop\DataBindingWPF-master\Pages\MainPage.xaml;;
 FC:\Users\st310-06\Desktop\DataBindingWPF-master\Pages\RegistrationPage.xaml;;
+=======
+FC:\Users\pc\Desktop\collage\DataBindingWPF-master\MainWindow.xaml;;
+FC:\Users\pc\Desktop\collage\DataBindingWPF-master\Pages\AddPatientPage.xaml;;
+FC:\Users\pc\Desktop\collage\DataBindingWPF-master\Pages\AppointmentPage.xaml;;
+FC:\Users\pc\Desktop\collage\DataBindingWPF-master\Pages\ChangeInfoPage.xaml;;
+FC:\Users\pc\Desktop\collage\DataBindingWPF-master\Pages\EnterPage.xaml;;
+FC:\Users\pc\Desktop\collage\DataBindingWPF-master\Pages\MainPage.xaml;;
+FC:\Users\pc\Desktop\collage\DataBindingWPF-master\Pages\RegistrationPage.xaml;;
+>>>>>>> 68bfe7522069bb4544432cb3b01b2ae64a25edc3
 

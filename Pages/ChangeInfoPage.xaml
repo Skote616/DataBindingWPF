@@ -23,7 +23,11 @@
                 <TextBox Text="{Binding Phone}"></TextBox>
                 <Button Margin="0,10,0,0" Click="Change_Patient">Изменить</Button>
                 <Button Margin="0,10,0,0" Click="Return">Вернуть изменения</Button>
+<<<<<<< HEAD
                 <Button Margin="0,10,0,0" Click="GoBack">Вернуться</Button>
+=======
+                <Button Margin="0,10,0,0" Click="GoBack">Вернуть изменения</Button>
+>>>>>>> 68bfe7522069bb4544432cb3b01b2ae64a25edc3
             </StackPanel>
         </Border>
     </Grid>

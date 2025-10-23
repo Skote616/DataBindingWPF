@@ -105,7 +105,11 @@ namespace DataBindingWPF.Pages
 
         }
 
+<<<<<<< HEAD
         private void GoBack (object sender, RoutedEventArgs e)
+=======
+        private async void GoBack (object sender, RoutedEventArgs e)
+>>>>>>> 68bfe7522069bb4544432cb3b01b2ae64a25edc3
         {
             NavigationService.GoBack();
         }

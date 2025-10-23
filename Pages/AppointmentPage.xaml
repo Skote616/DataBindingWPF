@@ -10,6 +10,7 @@
 
     <Grid>
       
+<<<<<<< HEAD
             <StackPanel Width="230" HorizontalAlignment="Left">
                 <Label Content="Индентификатор врача"></Label>
                 <TextBox x:Name="_doctorID" Text="{Binding Appointment.Doctor_id}"></TextBox>
@@ -56,5 +57,19 @@
             </ListView.ItemTemplate>
         </ListView>
         </StackPanel>
+=======
+            <StackPanel Width="230">
+                <Label Content="Индентификатор врача"></Label>
+                <TextBox x:Name="_doctorID" Text="{Binding Doctor_id}"></TextBox>
+                <Label Content="Дата приема"></Label>
+                <DatePicker SelectedDate="{Binding Date}"></DatePicker>
+                <Label Content="Диагноз"></Label>
+                <TextBox x:Name="_diagnosis" Text="{Binding Diagnosis}"></TextBox>
+                <Label Content="Рекомендации"></Label>
+                <TextBox x:Name="_recomendation" Text="{Binding Recomendations}"></TextBox>
+                <Button Margin="0,10,0,0" Click="addAppointment">Записать</Button>
+            </StackPanel>
+   
+>>>>>>> 68bfe7522069bb4544432cb3b01b2ae64a25edc3
     </Grid>
 </Page>

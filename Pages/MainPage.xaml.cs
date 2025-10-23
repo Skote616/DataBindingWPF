@@ -66,6 +66,14 @@ namespace DataBindingWPF.Pages
         private void toAddPatient (object sender, RoutedEventArgs e)
         {
            NavigationService.Navigate(new AddPatientPage( ));
+
+            if (List.SelectedItem != null)
+            {
+                NavigationService.Navigate(new AddPatientPage( ));
+            }
+            else
+            { MessageBox.Show("Пациент для изменения не выбран"); }
+
         }
 
         private void toAppointment(object sender, RoutedEventArgs e)
@@ -85,6 +93,8 @@ namespace DataBindingWPF.Pages
             }
             else
             { MessageBox.Show("Пациент для изменения не выбран"); }
+            NavigationService.Navigate(new ChangeInfoPage((Patient) List.SelectedItem));
+
         }
 
         public async void LoadAllPatients()

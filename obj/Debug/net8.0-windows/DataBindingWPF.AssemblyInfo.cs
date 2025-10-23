@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataBindingWPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fda5ce05671289b662d9422b0417390e86712a12")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataBindingWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataBindingWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
